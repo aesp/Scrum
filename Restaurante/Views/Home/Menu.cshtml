@@ -6,19 +6,25 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     var precioTotal = 0;
-		function agregar(item) {
-		    var input = document.getElementById(item.value);
-            
+
+
+    function agregar(item) {
+        var input = document.getElementById(item.value);
+        var val;
 		    if (item.checked) {
 		        input.style.visibility = "";
-		        precioTotal += parseInt(item.value);
+		        val = parseInt(input.value);
+		        precioTotal += parseInt(item.value) * val;
 		    }
 		    else {
 		        input.style.visibility = "hidden";
-		        precioTotal -= parseInt(item.value);
+		        val = parseInt(input.value);
+		        precioTotal -= parseInt(item.value)*val;
 		    }
 		    document.getElementById('PrecioTotal').innerHTML = precioTotal;
-    }	
+    }
+
+
 </script>
 
 
@@ -36,7 +42,7 @@
                             <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
                         <br>
                     }
                 }
@@ -52,7 +58,7 @@
                             <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
                         <br />
                     }
                 }
@@ -68,7 +74,7 @@
                             <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
                         <br />
                     }
                 }
@@ -84,7 +90,7 @@
                             <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
                         <br />
                     }
                 }
