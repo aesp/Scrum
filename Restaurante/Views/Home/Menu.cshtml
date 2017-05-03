@@ -26,72 +26,81 @@
     <div class="container">
         <img src="images/menu.png" alt="" class="menu-img wow fadeInDown first">
         <div class="row">
-            <div class="col-md-4 menu-items wow fadeIn first">
-            <h3 class="text-primary">Entradas</h3>
-            @foreach (var item in Model.LstPlatos)
+            <div class="col-md-3 menu-items wow fadeIn first">
+                <h3 class="text-primary">Entradas</h3>
+                @foreach (var item in Model.LstPlatos)
             {
                 if (item.TipoPlatoId == 1)
                 {
-                    <h5 class="food-title">
-                        <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
-                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
-                    </h5>                    
-                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />                    
-                     <br>
+                        <h5 class="food-title">
+                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
+                        </h5>
+                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <br>
+                    }
                 }
-            }
             </div>
             <!-- / menu-items -->
-            <div class="col-md-4 menu-items wow fadeIn second">
+            <div class="col-md-3 menu-items wow fadeIn second">
                 <h3 class="text-primary">Fondos</h3>
                 @foreach (var item in Model.LstPlatos)
                 {
                     if (item.TipoPlatoId == 2)
                     {
-                        <h5 class="food-title"><span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
-                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span></h5>
+                        <h5 class="food-title">
+                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
+                        </h5>
                         <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
                         <br />
                     }
                 }
             </div>
             <!-- / menu-items -->
-            <div class="col-md-4 menu-items wow fadeIn third">
+            <div class="col-md-3 menu-items wow fadeIn third">
                 <h3 class="text-primary">Postres</h3>
                 @foreach (var item in Model.LstPlatos)
                 {
                     if (item.TipoPlatoId == 3)
                     {
                         <h5 class="food-title">
-                        <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)"/></span>                    
-                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span></h5>
+                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
+                        </h5>
                         <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
                         <br />
                     }
                 }
                 <br />
+            </div>
+            <div class="col-md-3 menu-items wow fadeIn third">
                 <h3 class="text-primary">Bebidas</h3>
                 @foreach (var item in Model.LstPlatos)
                 {
                     if (item.TipoPlatoId == 4)
                     {
                         <h5 class="food-title">
-                        <span><input type="checkbox"  value="@item.Precio" onclick="agregar(this)" /></span>
-                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span></h5>
+                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
+                        </h5>
                         <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
                         <br />
                     }
-                } 
-            
-                <h1><span id="PrecioTotal">2</span></h1>
-            </div><!-- / menu-items --> 
-             
-            <div class="col-md-4 menu-items wow fadeIn third">
-               
-            </div>         
+                }
+            </div>
+        </div><!-- / menu-items --> 
+        <div class="row">
+            <div class="col-md-4 menu-items">
+                <h3 class="text-primary">Precio Total</h3>
+            </div>
+            <div class="col-md-4 menu-items">
+                <h1><span id="PrecioTotal">0</span></h1>
+            </div>
         </div>
+        <div class="col-md-4 menu-items wow fadeIn third">
+        </div>         
     </div>
-    
 </section>
 
 
