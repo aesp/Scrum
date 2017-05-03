@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="PedidoId" />
+          </Key>
+          <Property Name="PedidoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="PlatoId" />
+          </Key>
+          <Property Name="PlatoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoPlatoId" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plato_Pedido">
+          <Key>
+            <PropertyRef Name="PlatoPedidoId" />
+          </Key>
+          <Property Name="PlatoPedidoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlatoId" Type="int" Nullable="false" />
+          <Property Name="PedidoId" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoPlato">
+          <Key>
+            <PropertyRef Name="TipoPlatoId" />
+          </Key>
+          <Property Name="TipoPlatoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Plato_Pedido_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Plato_Pedido" Type="Self.Plato_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="PedidoId" />
+            </Principal>
+            <Dependent Role="Plato_Pedido">
+              <PropertyRef Name="PedidoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_Pedido_Plato">
+          <End Role="Plato" Type="Self.Plato" Multiplicity="1" />
+          <End Role="Plato_Pedido" Type="Self.Plato_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plato">
+              <PropertyRef Name="PlatoId" />
+            </Principal>
+            <Dependent Role="Plato_Pedido">
+              <PropertyRef Name="PlatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_TipoPlato">
+          <End Role="TipoPlato" Type="Self.TipoPlato" Multiplicity="1" />
+          <End Role="Plato" Type="Self.Plato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPlato">
+              <PropertyRef Name="TipoPlatoId" />
+            </Principal>
+            <Dependent Role="Plato">
+              <PropertyRef Name="TipoPlatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantModelStoreContainer">
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plato_Pedido" EntityType="Self.Plato_Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPlato" EntityType="Self.TipoPlato" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Plato_Pedido_Pedido" Association="Self.FK_Plato_Pedido_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Plato_Pedido" EntitySet="Plato_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_Pedido_Plato" Association="Self.FK_Plato_Pedido_Plato">
+            <End Role="Plato" EntitySet="Plato" />
+            <End Role="Plato_Pedido" EntitySet="Plato_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_TipoPlato" Association="Self.FK_Plato_TipoPlato">
+            <End Role="TipoPlato" EntitySet="TipoPlato" />
+            <End Role="Plato" EntitySet="Plato" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="PedidoId" />
+          </Key>
+          <Property Name="PedidoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Plato_Pedido" Relationship="Self.FK_Plato_Pedido_Pedido" FromRole="Pedido" ToRole="Plato_Pedido" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="PlatoId" />
+          </Key>
+          <Property Name="PlatoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoPlatoId" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Precio" Type="Double" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Plato_Pedido" Relationship="Self.FK_Plato_Pedido_Plato" FromRole="Plato" ToRole="Plato_Pedido" />
+          <NavigationProperty Name="TipoPlato" Relationship="Self.FK_Plato_TipoPlato" FromRole="Plato" ToRole="TipoPlato" />
+        </EntityType>
+        <EntityType Name="Plato_Pedido">
+          <Key>
+            <PropertyRef Name="PlatoPedidoId" />
+          </Key>
+          <Property Name="PlatoPedidoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlatoId" Type="Int32" Nullable="false" />
+          <Property Name="PedidoId" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Plato_Pedido_Pedido" FromRole="Plato_Pedido" ToRole="Pedido" />
+          <NavigationProperty Name="Plato" Relationship="Self.FK_Plato_Pedido_Plato" FromRole="Plato_Pedido" ToRole="Plato" />
+        </EntityType>
+        <EntityType Name="TipoPlato">
+          <Key>
+            <PropertyRef Name="TipoPlatoId" />
+          </Key>
+          <Property Name="TipoPlatoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Plato" Relationship="Self.FK_Plato_TipoPlato" FromRole="TipoPlato" ToRole="Plato" />
+        </EntityType>
+        <Association Name="FK_Plato_Pedido_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Plato_Pedido" Type="Self.Plato_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="PedidoId" />
+            </Principal>
+            <Dependent Role="Plato_Pedido">
+              <PropertyRef Name="PedidoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_Pedido_Plato">
+          <End Role="Plato" Type="Self.Plato" Multiplicity="1" />
+          <End Role="Plato_Pedido" Type="Self.Plato_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plato">
+              <PropertyRef Name="PlatoId" />
+            </Principal>
+            <Dependent Role="Plato_Pedido">
+              <PropertyRef Name="PlatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_TipoPlato">
+          <End Role="TipoPlato" Type="Self.TipoPlato" Multiplicity="1" />
+          <End Role="Plato" Type="Self.Plato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPlato">
+              <PropertyRef Name="TipoPlatoId" />
+            </Principal>
+            <Dependent Role="Plato">
+              <PropertyRef Name="TipoPlatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" />
+          <EntitySet Name="Plato_Pedido" EntityType="Self.Plato_Pedido" />
+          <EntitySet Name="TipoPlato" EntityType="Self.TipoPlato" />
+          <AssociationSet Name="FK_Plato_Pedido_Pedido" Association="Self.FK_Plato_Pedido_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Plato_Pedido" EntitySet="Plato_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_Pedido_Plato" Association="Self.FK_Plato_Pedido_Plato">
+            <End Role="Plato" EntitySet="Plato" />
+            <End Role="Plato_Pedido" EntitySet="Plato_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_TipoPlato" Association="Self.FK_Plato_TipoPlato">
+            <End Role="TipoPlato" EntitySet="TipoPlato" />
+            <End Role="Plato" EntitySet="Plato" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="RestaurantModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plato">
+            <EntityTypeMapping TypeName="RestaurantModel.Plato">
+              <MappingFragment StoreEntitySet="Plato">
+                <ScalarProperty Name="PlatoId" ColumnName="PlatoId" />
+                <ScalarProperty Name="TipoPlatoId" ColumnName="TipoPlatoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plato_Pedido">
+            <EntityTypeMapping TypeName="RestaurantModel.Plato_Pedido">
+              <MappingFragment StoreEntitySet="Plato_Pedido">
+                <ScalarProperty Name="PlatoPedidoId" ColumnName="PlatoPedidoId" />
+                <ScalarProperty Name="PlatoId" ColumnName="PlatoId" />
+                <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPlato">
+            <EntityTypeMapping TypeName="RestaurantModel.TipoPlato">
+              <MappingFragment StoreEntitySet="TipoPlato">
+                <ScalarProperty Name="TipoPlatoId" ColumnName="TipoPlatoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

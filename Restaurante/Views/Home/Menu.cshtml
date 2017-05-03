@@ -1,0 +1,157 @@
+﻿@model Restaurante.ViewModel.MenuViewModel
+@{
+    
+}
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    var precioTotal = 0;
+		function agregar(item) {
+		    var input = document.getElementById(item.value);
+            
+		    if (item.checked) {
+		        input.style.visibility = "";
+		        precioTotal += parseInt(item.value);
+		    }
+		    else {
+		        input.style.visibility = "hidden";
+		        precioTotal -= parseInt(item.value);
+		    }
+		    document.getElementById('PrecioTotal').innerHTML = precioTotal;
+    }	
+</script>
+
+
+<section id="menu">
+    <div class="container">
+        <img src="images/menu.png" alt="" class="menu-img wow fadeInDown first">
+        <div class="row">
+            <div class="col-md-4 menu-items wow fadeIn first">
+            <h3 class="text-primary">Entradas</h3>
+            @foreach (var item in Model.LstPlatos)
+            {
+                if (item.TipoPlatoId == 1)
+                {
+                    <h5 class="food-title">
+                        <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
+                    </h5>                    
+                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />                    
+                     <br>
+                }
+            }
+            </div>
+            <!-- / menu-items -->
+            <div class="col-md-4 menu-items wow fadeIn second">
+                <h3 class="text-primary">Fondos</h3>
+                @foreach (var item in Model.LstPlatos)
+                {
+                    if (item.TipoPlatoId == 2)
+                    {
+                        <h5 class="food-title"><span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span></h5>
+                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <br />
+                    }
+                }
+            </div>
+            <!-- / menu-items -->
+            <div class="col-md-4 menu-items wow fadeIn third">
+                <h3 class="text-primary">Postres</h3>
+                @foreach (var item in Model.LstPlatos)
+                {
+                    if (item.TipoPlatoId == 3)
+                    {
+                        <h5 class="food-title">
+                        <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)"/></span>                    
+                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span></h5>
+                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <br />
+                    }
+                }
+                <br />
+                <h3 class="text-primary">Bebidas</h3>
+                @foreach (var item in Model.LstPlatos)
+                {
+                    if (item.TipoPlatoId == 4)
+                    {
+                        <h5 class="food-title">
+                        <span><input type="checkbox"  value="@item.Precio" onclick="agregar(this)" /></span>
+                        @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span></h5>
+                        <input id="@item.Precio" type="number" min="0" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <br />
+                    }
+                } 
+            
+                <h1><span id="PrecioTotal">2</span></h1>
+            </div><!-- / menu-items --> 
+             
+            <div class="col-md-4 menu-items wow fadeIn third">
+               
+            </div>         
+        </div>
+    </div>
+    
+</section>
+
+
+<section id="pedido">
+    <div class="container">
+        <img src="@Url.Content("~/Content/images/delivery.jpg")" alt="" class="reservations-img wow fadeInDown first">
+        <div class="page-header text-center">
+            <h2 class="text-primary">Pedidos Lusho</h2>
+            <div class="separator-line-center large-spacing">&nbsp;</div>
+            <h4 class="sub-title">Lunes - Viernes: <span class="text-primary">09:00AM - 1:00AM</span>&nbsp; | &nbsp;Sabado-Domingo: <span class="text-primary">11AM - 12PM</span></h4>
+        </div>
+        <!-- / page-header -->
+        <div id="reservation-form" class="wow fadeIn first">
+            <form id="reservationForm" method="post" action="@Url.Action("AddPedidoPlatos")">
+                <div class="row">
+                    <div class="col-sm-6 reservation-left-area">
+                        <div class="form-group">                            
+                             @Html.TextBoxFor(x => x.Nombre, new {@class = "selectpicker form-control", placeholder ="NOMBRE"})
+                        </div>
+                        <!-- / form-group -->
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Apellido, new { @class = "selectpicker form-control",
+                           placeholder = "APELLIDO" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "selectpicker form-control",
+                           placeholder = "EMAIL" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Celular, new { @class = "selectpicker form-control",
+                           placeholder = "CELULAR" })
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 reservation-right-area">
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Direccion, new { @class = "selectpicker form-control",
+                           placeholder = "DIRECCION" })
+                        </div><!-- / form-group -->
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Fecha, new { @class = "selectpicker form-control",
+                           placeholder = "FECHA" })
+                        </div><!-- / form-group -->
+                        <div class="form-group">
+                            
+                            @Html.TextBoxFor(x=>x.Hora, new { @class = "selectpicker form-control",placeholder = "HORA" })
+                        </div>
+                        <!-- / form-group -->
+                    </div>
+                    <!--button -->
+                    <div class="col-xs-12 textarea-button">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-lg btn-primary-filled btn-form-submit btn-pill wow fadeInUp first"><i class="glyphicon glyphicon-send"></i><span><b>Hacer el pedido</b></span></button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!--button -->
+                </div><!-- / row -->
+            </form><!-- / reservationForm -->
+        </div><!-- / reservetion-form -->
+    </div><!-- / container -->
+</section>

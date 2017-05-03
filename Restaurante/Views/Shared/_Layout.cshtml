@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- favicon -->
+    <link rel="icon" href= @Url.Content("~/Content/images/logo.png")>
+    <!-- page title -->
+    <title>Don Lusho Restaurant</title>
+    <!-- bootstrap css -->
+    <link href="@Url.Content("~/Content/css/bootstrap-datetimepicker.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet">
+    <!-- css -->
+    <link href=@Url.Content("~/Content/css/style.css") rel="stylesheet">
+    <link href=@Url.Content("~/Content/css/animate.css") rel="stylesheet">
+    <link href=@Url.Content("~/Content/css/magnific-popup.css") rel="stylesheet">
+    <link href=@Url.Content("~/Content/css/bootstrap-datetimepicker.css") rel="stylesheet">
+    <!-- fonts -->
+    <link href="../../../fonts.googleapis.com/css53e9.css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
+    <link href="../../../fonts.googleapis.com/css53e9.css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
+    <link href="../../../fonts.googleapis.com/css614e.css?family=Cabin:400,700" rel="stylesheet">
+    <link href=@Url.Content("~/Content/css/font-awesome.min.css") rel="stylesheet" type="text/css" />
+    <link href=@Url.Content("~/Content/fonts/FontAwesome.otf") rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <div id="top"></div>
+
+    <header>
+        <nav class="navbar navbar-default dark-bg navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="@Url.Content("~/Content/images/logo.png")" alt="logo" class="inline-logo"> <img src="@Url.Content("~/Content/images/logo.png")"  alt="logo" class="collapsed-logo"></a>
+                </div>
+            <!-- / navbar-header -->
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index","Home")">HOME</a></li>
+                        <li><a href="@Url.Action("Index","Home")#about">ABOUT</a></li>
+                        <li><a href="@Url.Action("Menu","Home")">MENU</a></li>
+                        <li><a href="menu.html#combos">COMBOS</a></li>
+                        <li><a href="menu.html#promocion">PROMOCIONES</a></li>
+                        <li><a href="menu.html#combinalo">COMBINALO</a></li>
+                        <li><a href="@Url.Action("Menu","Home")#pedido">PEDIDOS</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!-- / container -->
+        </nav>
+    </header>
+    <!-- / header -->
+    @RenderBody()
+    <!-- scroll to top -->
+    <a href="#top" class="scroll-to-top page-scroll is-hidden" data-nav-status="toggle"><i class="fa fa-angle-up"></i></a>
+    <!-- / scroll to top -->
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-info">
+                © 2017 - <strong>DL</strong> - Don Lusho Restaurant.
+                <span class="social pull-right">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                </span>
+            </p>
+        </div><!-- / container -->
+    </footer>
+    <!-- / footer -->
+    <!-- javascript -->
+    <script src="@Url.Content("~/Content/js/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap.min.js")"></script>
+
+    <!-- sticky nav -->
+    <script src="@Url.Content("~/Content/js/jquery.easing.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/scrolling-nav-sticky.js")"></script>
+    <!-- / sticky nav -->
+    <!-- preloader -->
+    <script src="@Url.Content("~/Content/js/preloader.js")"></script>
+    <!-- / preloader -->
+    <!-- wow -->
+    <script src="@Url.Content("~/Content/js/wow.min.js")"></script>
+    <script>
+new WOW().init();
+    </script>
+    <!-- / wow -->
+    <!-- gallery script -->
+    <script src="@Url.Content("~/Content/js/custom.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.shuffle.min.js")"></script>
+    <!-- lightbox -->
+    <script src="@Url.Content("~/Content/js/jquery.magnific-popup.min.js")"></script>
+    <script type="text/javascript">
+        // This will create a single gallery from all elements that have class "lightbox"
+
+$('.lightbox').each(function() {
+    $(this).magnificPopup({
+        delegate: 'a.open-gallery', // the selector for gallery item
+        type: 'image',
+        gallery: {
+          enabled:true
+        }
+    });
+});
+    </script>
+    <!-- / lightbox -->
+    <!-- / gallery script -->
+    <!-- date-time picker -->
+    <script src="@Url.Content("~/Content/js/moment.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-datetimepicker.js")"></script>
+    <script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+    </script>
+    <!-- / date-time picker -->
+    <!-- contact-form -->
+    <script src="@Url.Content("~/Content/js/validator.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/form-scripts.js")" type="text/javascript"></script>
+    <!-- / contact-form -->
+    <!-- google-maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA40uewXP25u1A4o9u8ueBimZZwIdNLkY"></script>
+    <script src="@Url.Content("~/Content/js/map.js")"></script>
+    <!-- / google-maps -->
+    <!-- hide nav -->
+    <script src="@Url.Content("~/Content/js/hide-nav.js")"></script>
+    <!-- / hide nav -->
+    <!-- / javascript -->
+
+</body>
+</html>

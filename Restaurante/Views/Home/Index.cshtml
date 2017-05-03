@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- slider -->
+<div id="slider" class="carousel slide has-top-menu dark-slider">
+    <div class="carousel-inner">
+        <!-- slide 1 -->
+        <div class="item active slide1">
+            <div class="container">
+                <div class="carousel-caption">
+                    <div class="row">
+                        <div class="col-md-12 slider-content">
+                            <img src="@Url.Content("~/Content/images/delivery.jpg")" alt="" class="animated fadeInDown first">
+                            <h2 class="slide-title fadeInUp animated second space-top-30"><span class="text-primary">Don Lusho</span> Delivery</h2>
+                            <div class="separator-line-center-2x primary-bg-color animated fadeInDown third"></div>
+                            <p class="slide-text flipInX animated third">Quisque vitae tempor libero. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+                        </div><!-- slider-content -->
+                    </div><!-- / row -->
+                </div><!-- / carousel-caption -->
+            </div><!-- / container -->
+        </div><!-- / slide 1 -->
+        <!-- slide 3 -->
+        <div class="item slide3">
+            <div class="container">
+                <div class="carousel-caption">
+                    <div class="row">
+                        <div class="col-md-12 slider-content">
+                            <img src="@Url.Content("images/slide-img3.png")" alt="" class="animated fadeInDown first">
+                            <h2 class="slide-title fadeInUp animated second space-top-30"><span class="text-primary">Don Lusho</span> Delivery</h2>
+                            <div class="separator-line-center-2x primary-bg-color animated fadeInDown third"></div>
+                            <p class="slide-text flipInX animated third">Cras finibus diam non tincidunt cursus. Pellentesque pharetra dui at felis faucibus tincidunt. Mauris dictum laoreet.</p>
+                        </div><!-- slider-content -->
+                    </div><!-- / row -->
+                </div><!-- / carousel-caption -->
+            </div><!-- / container -->
+        </div><!-- / slide 3 -->
+
+    </div><!-- /carousel-inner -->
+    <!-- controls -->
+    <a class="left carousel-control" href="#slider" data-slide="prev"><span class="fa fa-angle-left"></span></a>
+    <a class="right carousel-control" href="#slider" data-slide="next"><span class="fa fa-angle-right"></span></a>
+    <!-- / controls -->
+
+</div>
+<!-- / slider-->
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 about-img wow fadeInLeft first">
+                <img src="@Url.Content("~/Content/images/about-img.jpg")" alt="about">
+            </div><!-- / about-img -->
+            <div class="col-md-6 about-text wow fadeInRight first">
+                <h2 class="text-primary">Our Story</h2>
+                <div class="separator-line space-bottom text-left">&nbsp;</div>
+                <h4 class="sub-title">Welcome to <span class="text-primary">Minimal Restaurant</span></h4>
+                <p>Donec tempus pretium augue, vitae malesuada arcu sollicitudin et. Quisque ultricies nisl eget neque sagittis, quis pulvinar ante aliquet. Sed tempor porta aliquam. Suspendisse dapibus diam vel semper bibendum. Aliquam maximus ultrices sapien quis aliquet. Nunc nec laoreet sapien, non fringilla purus.</p>
+                <p>Fusce pulvinar porta nibh tincidunt accumsan. Pellentesque sollicitudin tellus quis odio consequat rutrum. Mauris vulputate arcu a condimentum hendrerit. Morbi non turpis a mi efficitur cursus a vitae nisi.</p>
+                <blockquote class="space-top">
+                    <p>Cras ut condimentum erat. Nam quis enim mauris. Suspendisse tristique eleifend odio, vel auctor arcu laoreet et. Duis ultrices at tellus eget pretium. Duis urna enim, dapibus feugiat erat eget, tempor egestas nunc.</p>
+                    <cite>- James Doe</cite>
+                </blockquote>
+            </div><!-- / about-text -->
+        </div><!-- / row -->
+        <div class="row space-top-30">
+            <div class="col-md-6 about-text-2 wow fadeInLeft second">
+                <h2 class="text-primary">The History</h2>
+                <div class="separator-line space-bottom text-left">&nbsp;</div>
+                <h4 class="sub-title">The best food in town since <span class="text-primary">1969</span></h4>
+                <p>Proin pulvinar rhoncus arcu, a dignissim ligula suscipit ut. Ut scelerisque, orci id feugiat tempor, mauris odio faucibus metus, id porttitor neque libero et urna. Vestibulum lobortis ligula at erat elementum, sit amet porta augue feugiat. Duis commodo erat ut est feugiat, dictum dictum sem laoreet. Ut feugiat vel ante id eleifend. Maecenas laoreet nibh a velit dapibus finibus. Mauris nulla diam, malesuada imperdiet libero ut, molestie vulputate justo.</p>
+                <p>Nunc iaculis ut urna nec porta. Donec molestie tellus vitae leo consectetur molestie. Duis vel neque justo. Aliquam egestas sapien quis massa tempor, at placerat nisl pulvinar. In dignissim at dolor sed consequat. Nam sodales sapien lectus, eu sodales ante scelerisque nec. Nam volutpat suscipit ante vel.</p>
+                <p>Pellentesque iaculis nisl vitae ligula volutpat, sit amet rhoncus nisl posuere. Vestibulum vel nisi euismod, <span class="bg-primary">the key to success</span>  eu consectetur arcu odio fringilla ex. Nullam sit amet nisi volutpat, ornare risus a, tincidunt orci.</p>
+            </div><!-- / about-text-2 -->
+            <div class="col-md-6 about-slider wow fadeInRight second">
+                <div id="mini-slider" class="carousel slide" data-ride="carousel">
+                    <!-- wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="@Url.Content("~/Content/images/about-img1.jpg")" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="@Url.Content("~/Content/images/about-img2.jpg")" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="@Url.Content("~/Content/images/about-img3.jpg")" alt="">
+                        </div>
+                    </div>
+                    <!-- / wrapper for slides -->
+                    <!-- controls -->
+                    <a class="left carousel-control" href="#mini-slider" role="button" data-slide="prev">
+                        <span class="fa fa-angle-left" aria-hidden="true"></span>
+                    </a>
+                    <a class="right carousel-control" href="#mini-slider" role="button" data-slide="next">
+                        <span class="fa fa-angle-right" aria-hidden="true"></span>
+                    </a>
+                    <!-- / controls -->
+                </div><!-- / mini-slider -->
+            </div><!-- / about-slider -->
+        </div><!-- / row -->
+    </div><!-- / container -->
+</section>
+<!-- / about -->
