@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+    <EntitySetMapping Name="Pedido">
+      <EntityTypeMapping TypeName="RestaurantModel.Pedido">
+        <MappingFragment StoreEntitySet="Pedido">
+          <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plato">
+      <EntityTypeMapping TypeName="RestaurantModel.Plato">
+        <MappingFragment StoreEntitySet="Plato">
+          <ScalarProperty Name="PlatoId" ColumnName="PlatoId" />
+          <ScalarProperty Name="TipoPlatoId" ColumnName="TipoPlatoId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plato_Pedido">
+      <EntityTypeMapping TypeName="RestaurantModel.Plato_Pedido">
+        <MappingFragment StoreEntitySet="Plato_Pedido">
+          <ScalarProperty Name="PlatoPedidoId" ColumnName="PlatoPedidoId" />
+          <ScalarProperty Name="PlatoId" ColumnName="PlatoId" />
+          <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPlato">
+      <EntityTypeMapping TypeName="RestaurantModel.TipoPlato">
+        <MappingFragment StoreEntitySet="TipoPlato">
+          <ScalarProperty Name="TipoPlatoId" ColumnName="TipoPlatoId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -13,20 +13,20 @@
         var val;
 		    if (item.checked) {
 		        input.style.visibility = "";
-		        val = parseInt(input.value);
-		        precioTotal += parseInt(valor) * val;
+		        val = parseFloat(input.value);
+		        precioTotal += parseFloat(valor) * val;
 		    }
 		    else {
 		        input.style.visibility = "hidden";
-		        val = parseInt(input.value);
-		        precioTotal -= parseInt(valor)*val;
+		        val = parseFloat(input.value); 
+		        precioTotal -= parseFloat(valor)*val;
 		    }
 		    document.getElementById('PrecioTotal').innerHTML = precioTotal;
     }
     function actualizar(val,item) {
-        fact = parseInt(item.value);
-        fact2 = parseInt(item.defaultValue);
-        precioTotal += parseInt(val) * (fact - fact2);
+        fact = parseFloat(item.value);
+        fact2 = parseFloat(item.defaultValue);
+        precioTotal += parseFloat(val) * (fact - fact2);
         item.defaultValue = item.value;
         document.getElementById('PrecioTotal').innerHTML = precioTotal;
     }
