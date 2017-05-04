@@ -8,22 +8,28 @@
     var precioTotal = 0;
 
 
-    function agregar(item) {
+    function agregar(item,valor) {
         var input = document.getElementById(item.value);
         var val;
 		    if (item.checked) {
 		        input.style.visibility = "";
 		        val = parseInt(input.value);
-		        precioTotal += parseInt(item.value) * val;
+		        precioTotal += parseInt(valor) * val;
 		    }
 		    else {
 		        input.style.visibility = "hidden";
 		        val = parseInt(input.value);
-		        precioTotal -= parseInt(item.value)*val;
+		        precioTotal -= parseInt(valor)*val;
 		    }
 		    document.getElementById('PrecioTotal').innerHTML = precioTotal;
     }
-
+    function actualizar(val,item) {
+        fact = parseInt(item.value);
+        fact2 = parseInt(item.defaultValue);
+        precioTotal += parseInt(val) * (fact - fact2);
+        item.defaultValue = item.value;
+        document.getElementById('PrecioTotal').innerHTML = precioTotal;
+    }
 
 </script>
 
@@ -39,10 +45,10 @@
                 if (item.TipoPlatoId == 1)
                 {
                         <h5 class="food-title">
-                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            <span><input type="checkbox" value="@item.Nombre" onclick="agregar(this,@item.Precio)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Nombre" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" onchange="actualizar(@item.Precio,this)"/>
                         <br>
                     }
                 }
@@ -55,10 +61,10 @@
                     if (item.TipoPlatoId == 2)
                     {
                         <h5 class="food-title">
-                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            <span><input type="checkbox" value="@item.Nombre" onclick="agregar(this,@item.Precio)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Nombre" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" onchange="actualizar(@item.Precio,this)"/>
                         <br />
                     }
                 }
@@ -71,10 +77,10 @@
                     if (item.TipoPlatoId == 3)
                     {
                         <h5 class="food-title">
-                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            <span><input type="checkbox" value="@item.Nombre" onclick="agregar(this,@item.Precio)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Nombre" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" onchange="actualizar(@item.Precio,this)"/>
                         <br />
                     }
                 }
@@ -87,10 +93,10 @@
                     if (item.TipoPlatoId == 4)
                     {
                         <h5 class="food-title">
-                            <span><input type="checkbox" value="@item.Precio" onclick="agregar(this)" /></span>
+                            <span><input type="checkbox" value="@item.Nombre" onclick="agregar(this,@item.Precio)" /></span>
                             @item.Nombre <span class="pull-right food-price text-primary">s./@item.Precio</span>
                         </h5>
-                        <input id="@item.Precio" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" />
+                        <input id="@item.Nombre" type="number" min="0" value ="1" class="pull-left col-md-4 food-price text-primary" style="visibility:hidden" onchange="actualizar(@item.Precio,this)"/>
                         <br />
                     }
                 }
